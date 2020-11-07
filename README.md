@@ -49,18 +49,18 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 ## addressesテーブル
 |   Culumn    | Type   |   Options   |
 | ----------- | ------ | ----------- |
 | postal_code | string | null: false |
-|    state    | string | null: false |
+|   state_id  | integer| null: false |
 |    city     | string | null: false |
 |house_number | string | null: false |
 |building_name| string |             |
-|phone_number | integer | null: false |
-| purchase_records| references | null: false,foreign_key: true |
+|phone_number | string | null: false |
+| purchase_record| references | null: false,foreign_key: true |
 
 ### Association
 - belongs_to :purchase_record
