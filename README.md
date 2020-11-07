@@ -7,7 +7,7 @@
 | -------- | ------ | ----------- |
 | nickname | string | null: false,unique: true |
 | email    | string | null: false,unique: true |
-| password | string | null: false |
+| encrypted_password | string | null: false |
 | last_name| string | null: false |
 |first_name| string | null: false |
 |last_name_kana| string | null: false |
@@ -26,11 +26,11 @@
 | item_name | string |  null: false  |
 |description|  text  |  null: false  |
 |   price   |integer |  null: false  |
-| category  | string |  null: false  |
-| condition | string |  null: false  |
-|shipping_charge| string |  null: false  |
-|    area   | string |  null: false  |
-|delivery_time| string |  null: false  |
+| category_id  | integer |  null: false  |
+| condition_id | integer |  null: false  |
+|shipping_charge_id| integer |  null: false  |
+|  area_id  | integer |  null: false  |
+|delivery_time_id| integer |  null: false  |
 |   user    | references | null: false,foreign_key: true |
 
 
@@ -44,7 +44,6 @@
 | -------- | ---------- | --------- |
 |   user   | references | null: false,foreign_key: true |
 |   item   | references | null: false,foreign_key: true |
-| address  | references | null: false,foreign_key: true |
 
 
 ### Association
@@ -61,6 +60,7 @@
 |house_number | string | null: false |
 |building_name| string |             |
 |phone_number | integer | null: false |
+| purchase_records| references | null: false,foreign_key: true |
 
 ### Association
 - belongs_to :purchase_record
