@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index,:show]
-  before_action :set_item, only: [:show,:edit,:update,:ensure_correct_user]
-  before_action :ensure_correct_user, only: [:edit,:update]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :update, :ensure_correct_user]
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -20,10 +20,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show 
+  def show
   end
 
-  def edit  
+  def edit
   end
 
   def update
@@ -39,9 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def ensure_correct_user
-    unless @item.user == current_user
-      redirect_to root_path
-    end
+    redirect_to root_path unless @item.user == current_user
   end
 
   private
