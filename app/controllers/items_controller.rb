@@ -55,7 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def ensure_purchase
-    @item = Item.find(params[:id])
     redirect_to root_path if @item.purchase_record
   end
 end
