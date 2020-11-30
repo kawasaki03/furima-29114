@@ -74,15 +74,23 @@
 
 /* 出品画像 */
 .img-upload {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
   padding: 2vh 0;
 }
 
 .click-upload {
   margin: 15px 0;
   min-width: 250px;
+}
+
+.image {
+  width: 50%;
+}
+
+.image img{
+  width:100%;
 }
 
 .click-upload>p {
