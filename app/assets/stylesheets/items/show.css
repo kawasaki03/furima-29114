@@ -204,3 +204,38 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+
+/* コメント機能 */
+.comment-index {
+  width: 40vw;
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.list-name{
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.comments {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  margin: 10px 0;
+
+}
+
+.comment p {
+  font-size: 17px;
+}
+
+.need-login {
+  font-size: 15px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
