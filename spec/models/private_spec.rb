@@ -12,7 +12,6 @@ RSpec.describe Private, type: :model do
       end
     end
     context '新規登録がうまくいかない時' do
-
       it 'first_nameが空だと登録できない' do
         @private.first_name = ''
         @private.valid?
@@ -64,7 +63,6 @@ RSpec.describe Private, type: :model do
       end
     end
   end
-
 
   pending "add some examples to (or delete) #{__FILE__}"
 end

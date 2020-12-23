@@ -1,6 +1,6 @@
 class Private < ApplicationRecord
   belongs_to :user, optional: true
-  validates :birthday,presence: true
+  validates :birthday, presence: true
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'Full-width characters' } do
     validates :last_name
     validates :first_name

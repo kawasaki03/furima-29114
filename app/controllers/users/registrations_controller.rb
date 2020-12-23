@@ -4,8 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-
-
   # GET /resource/sign_up
   def new
     super
@@ -14,37 +12,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.new(sign_up_params)
-    unless @user.valid?
-      render :new and return
-    end
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    render :new and return unless @user.valid?
+
+    session['devise.regist_data'] = { user: @user.attributes }
+    session['devise.regist_data'][:user]['password'] = params[:user][:password]
     @private = @user.build_private
     render :new_privates
   end
 
   def create_privates
-    @user = User.new(session["devise.regist_data"]["user"])
+    @user = User.new(session['devise.regist_data']['user'])
     @private = Private.new(private_params)
-    unless @private.valid?
-      render :new_privates and return
-    end
+    render :new_privates and return unless @private.valid?
+
     @user.build_private(@private.attributes)
     @user.save
-    session["devise.regist_data"]["user"].clear
-    sign_in(:user,@user)
+    session['devise.regist_data']['user'].clear
+    sign_in(:user, @user)
     redirect_to root_path
   end
 
   private
 
   def private_params
-    params.require(:private).permit(:last_name, :first_name, :last_name_kana,:first_name_kana, :birthday)
+    params.require(:private).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :birthday)
   end
-
-
-
-
 
   # GET /resource/edit
   # def edit

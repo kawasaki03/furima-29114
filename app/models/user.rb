@@ -12,7 +12,6 @@ class User < ApplicationRecord
     validates :nickname, uniqueness: true
   end
 
-  
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
 end
