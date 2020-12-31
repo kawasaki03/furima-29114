@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show,:search]
   before_action :set_item, only: [:show, :edit, :update, :ensure_correct_user, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :ensure_purchase, only: [:edit, :update, :destroy]
@@ -40,6 +40,10 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
 
   private

@@ -10,6 +10,9 @@ devise_scope :user do
 end
 
   resources :items do
+    collection do
+      get 'search'
+    end
     resources :comments, only: :create
     resources :orders,only:[:index,:new,:create]
   end
