@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_one :purchase_record
-  has_many :comments, dependent: :destroy
+  has_many :comments, foreign_key: :item_id, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
