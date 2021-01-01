@@ -46,6 +46,12 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword])
   end
 
+  def search_category
+    # 検索条件にマッチした商品の情報を取得
+    @items = Item.where(category_id: params[:category_id_eq])
+    
+  end
+
   private
 
   def set_item
@@ -63,4 +69,5 @@ class ItemsController < ApplicationController
   def ensure_purchase
     redirect_to root_path if @item.purchase_record
   end
+
 end
