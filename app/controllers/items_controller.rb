@@ -49,7 +49,6 @@ class ItemsController < ApplicationController
   def search_category
     # 検索条件にマッチした商品の情報を取得
     @items = Item.where(category_id: params[:category_id_eq])
-    
   end
 
   private

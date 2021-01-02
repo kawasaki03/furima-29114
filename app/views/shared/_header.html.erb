@@ -12,12 +12,13 @@
     <ul class='lists-left'>
       <li>
       <%= form_with url: search_category_items_path ,method: :get, local: true do |f|%>
-      <%=f.label :category_id_eq, 'カテゴリー'%>
-      <%=f.collection_select :category_id_eq, Category.all,:id,:name %>
-      <%= f.submit '検索' %>
+      <%=f.label :category_id_eq, 'カテゴリー', id: "category", class:"category"%>
+      <%=f.collection_select :category_id_eq, Category.all,:id,:name ,{},id: "category_li",class: "category_li",onchange:"submit(this.form)"%>
+      <%# <div class= "category_dropdown"> %>
+      <%# </div> %>
       <%end%>
       </li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <%# <li><%= link_to 'ブランド', "#", class: "brand-list" %></li> 
     </ul>
     <ul class='lists-right'>
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
