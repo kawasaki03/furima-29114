@@ -2,17 +2,19 @@
 <header class='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-    <form class="search-form" action="#">
-      <input class='input-box' placeholder='キーワードから探す'>
-      <button class="search-button">
-        <%= image_tag "search.png", class:"search-icon" %>
-      </button>
-    </form>
+    <%=form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.select :category_id_eq, 
+       {'レディース': 2, 'メンズ': 3, 'ベビー・キッズ': 4, 'インテリア・住まい・小物': 5, '本・音楽・ゲーム': 6, 'おもちゃ・ホビー・グッズ': 7, '家電・スマホ・カメラ': 8, 'スポーツ・レジャー': 9,'ハンドメイド': 10, 'その他': 11},
+      {include_blank: '全てのカテゴリー' }, { class: "category_li"} %>
+    <%=form.text_field :keyword, placeholder: 'キーワードを入力',class: 'input-box' %>
+    <%=form.submit class: 'search-button',type: 'image', src:'/assets/search.png'%>
+    <%end %>
+
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li><%= link_to 'カテゴリー', "#", class: "category-list"%></li> 
+      <li><%= link_to 'ブランド', "#", class: "brand-list"%></li> 
     </ul>
     <ul class='lists-right'>
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>

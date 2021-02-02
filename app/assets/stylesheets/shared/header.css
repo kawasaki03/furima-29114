@@ -102,3 +102,9 @@
   text-decoration: none;
   color: #333333;
 }
+
+
+.category_li{
+  width: 150px;
+  font-size: 15px;
+}  

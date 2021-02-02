@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show,:search]
   before_action :set_item, only: [:show, :edit, :update, :ensure_correct_user, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :ensure_purchase, only: [:edit, :update, :destroy]
@@ -42,6 +42,10 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @items = Item.search(params[:category_id_eq],params[:keyword]).order('created_at DESC')
+  end
+
   private
 
   def set_item
@@ -59,4 +63,5 @@ class ItemsController < ApplicationController
   def ensure_purchase
     redirect_to root_path if @item.purchase_record
   end
+
 end
