@@ -43,12 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword])
-  end
-
-  def search_category
-    # 検索条件にマッチした商品の情報を取得
-    @items = Item.where(category_id: params[:category_id_eq])
+    @items = Item.search(params[:category_id_eq],params[:keyword]).order('created_at DESC')
   end
 
   private

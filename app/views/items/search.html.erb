@@ -1,9 +1,18 @@
 <%= render "shared/header" %>
 <div class='item-contents'>
-<%if @items.length > 0%>
+<%if @items.length !=  0%>
+  <h2 class='category-title'> 
+   <%if params[:category_id_eq] != "" %>
+     カテゴリー：<%=Category.data[params["category_id_eq"].to_i - 1][:name] %>
+   <%else %>
+     カテゴリー：全てのカテゴリー
+   <%end %>
+    </h2>
+    <%if params[:keyword] != ""%>
     <h1 class='keyword-title'>
-    " <%= params[:keyword]%> "を含む商品一覧
+    検索結果 " <%= params[:keyword]%> "
     </h1>
+    <%end%>
     <ul class='item-lists'>
 
          <%@items.each do |item|%>
@@ -38,10 +47,22 @@
           <%end%>
     </ul>
   <%else%>
+  <h2 class='category-title'> 
+    <%if params[:category_id_eq] != "" %>
+     カテゴリー：<%=Category.data[params["category_id_eq"].to_i - 1][:name] %>
+    <%else %>
+     カテゴリー：全てのカテゴリー
+    <%end %>
+  </h2>
+    <%if params[:keyword] != ""%>
+      <h1 class='keyword-title'>
+        検索結果 " <%= params[:keyword]%> "
+      </h1>
+    <%end%>
     <h1 class='keyword-title'>
-    " <%= params[:keyword]%> "を含む商品はありません
+      該当する商品はありません
     </h1>
-    <ul class='item-lists'>
-  <%end%>
+   
+<%end%>
   </div>
 <%= render "shared/footer" %>

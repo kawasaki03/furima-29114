@@ -16,11 +16,19 @@ class Item < ApplicationRecord
 
   validates :category_id, :condition_id, :shipping_charge_id, :area_id, :delivery_time_id, numericality: { other_than: 1, message: 'Select' }
 
-  def self.search(search)
-    if search != ""
-      Item.where("item_name LIKE(?)", "%#{search}%")
-    else
-      Item.all
-    end
+  def self.search(category_id,search)
+    if category_id != ""
+      if search != ""
+        Item.where(category_id: category_id).where("item_name LIKE(?)", "%#{search}%")
+        else
+          Item.where(category_id: category_id)
+        end 
+      else 
+        if search != ""
+          Item.where("item_name LIKE(?)", "%#{search}%")
+        else
+          Item.all
+        end
+      end
   end
 end

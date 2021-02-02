@@ -103,16 +103,8 @@
   color: #333333;
 }
 
-.category{
-  position: relative;
-}
-.category_dropdown{
-  position: absolute;
-}
 
-/* .category_li{
-  display: none;
-} 
-.category_li.open{
-  display: block;
-}  */
+.category_li{
+  width: 150px;
+  font-size: 15px;
+}  

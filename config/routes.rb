@@ -12,7 +12,6 @@ end
   resources :items do
     collection do
       get 'search'
-      get 'search_category'
     end
     resources :comments, only: :create
     resources :orders,only:[:index,:new,:create]
