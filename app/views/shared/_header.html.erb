@@ -7,7 +7,7 @@
        {'レディース': 2, 'メンズ': 3, 'ベビー・キッズ': 4, 'インテリア・住まい・小物': 5, '本・音楽・ゲーム': 6, 'おもちゃ・ホビー・グッズ': 7, '家電・スマホ・カメラ': 8, 'スポーツ・レジャー': 9,'ハンドメイド': 10, 'その他': 11},
       {include_blank: '全てのカテゴリー' }, { class: "category_li"} %>
     <%=form.text_field :keyword, placeholder: 'キーワードを入力',class: 'input-box' %>
-    <%=form.submit class: 'search-button',type: 'image', src:'/assets/search.png'%>
+    <%=form.submit class: 'search-button',type: 'image', src:'/search.png'%>
     <%end %>
 
   </div>
@@ -17,7 +17,7 @@
       <li><%= link_to 'ブランド', "#", class: "brand-list"%></li> 
     </ul>
     <ul class='lists-right'>
-      <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
+     
       <%if user_signed_in?%>
       <li><%= link_to current_user.nickname, "#", class: "user-nickname"%> </li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%> </li>
@@ -25,7 +25,7 @@
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
       <li><%= link_to '新規登録',  new_user_registration_path, class: "sign-up" %></li>
       <%end%>
-      <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
+   
     </ul>
   </div>
 </header>
