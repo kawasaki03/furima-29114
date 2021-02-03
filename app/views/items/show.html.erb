@@ -113,9 +113,15 @@
   <%if @comments%>
   <div class="comments">
   <%@comments.each do |comment|%>
+    <%if comment.user == @item.user%> 
+      <div class="seller-comment">
+      <p><%=comment.user.nickname%>（出品者）：<%=comment.text%></p>
+      </div>
+    <%else%>
   <div class="comment">
   <p><%=comment.user.nickname%>：<%=comment.text%></p>
   </div>
+  <%end%>
   <%end%>
   </div>
   <%end%>
